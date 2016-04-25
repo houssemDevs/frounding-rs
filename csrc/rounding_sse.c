@@ -1,7 +1,7 @@
 #include "rounding_sse.h"
 
-b32 sse_cw() {
-	b32 cw = 0;
+unsigned int sse_cw() {
+	unsigned int cw = 0;
 	__asm__ __volatile__(
 			"stmxcsr %0;"
 			:"=m"(cw)
@@ -11,7 +11,7 @@ b32 sse_cw() {
 	return (cw);
 }
 
-set_sse_cw(b32 cw) {
+void sse_set_cw(unsigned int cw) {
 	__asm__ __volatile__ (
 			"ldmxcsr %0;"
 			:
@@ -20,8 +20,8 @@ set_sse_cw(b32 cw) {
 	);
 }
 
-void round_upward() {
-	b32 cw = 0;
+void sse_round_upward() {
+	unsigned int cw = 0;
 	__asm__ __volatile__ (
 			"xor %%eax,%%eax;"
 			"stmxcsr %0;"
@@ -36,8 +36,8 @@ void round_upward() {
 	);
 }
 
-void round_downward() {
-	b32 cw = 0;
+void sse_round_downward() {
+	unsigned int cw = 0;
 	__asm__ __volatile__(
 			"xor %%eax,%%eax;"
 			"stmxcsr %0;"
@@ -52,8 +52,8 @@ void round_downward() {
 	);
 }
 
-void round_tonearest() {
-	b32 cw = 0;
+void sse_round_tonearest() {
+	unsigned int cw = 0;
 	__asm__ __volatile__(
 			"xor %%eax,%%eax;"
 			"stmxcsr %0;"
@@ -67,8 +67,8 @@ void round_tonearest() {
 	);
 }
 
-void round_truncate() {
-	b32 cw = 0;
+void sse_round_truncate() {
+	unsigned int cw = 0;
 	__asm__ __volatile__ (
 			"xor %%eax,%%eax;"
 			"stmxcsr %0;"

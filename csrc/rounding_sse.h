@@ -1,16 +1,14 @@
 
 
-#define b32 unsigned int
 
+unsigned int sse_cw(); // Get the content of the MXCSR register.
 
-b32 sse_cw(); // Get the content of the MXCSR register.
+void sse_set_cw(unsigned int cw); // Set the content of the MXCSR register.
 
-void set_sse_cw(b32 cw); // Set the content of the MXCSR register.
+void sse_round_upward(); // Set rounding mode toward +infinity.
 
-void round_upward(); // Set rounding mode toward +infinity.
+void sse_round_downward(); // Set rounding mode toward -infinity.
 
-void round_downward(); // Set rounding mode toward -infinity.
+void sse_round_tonearest(); // Set rounding mode to nearest.
 
-void round_tonearest(); // Set rounding mode to nearest.
-
-void round_truncate(); // Set rounding mode to truncate mode.
+void sse_round_truncate(); // Set rounding mode to truncate mode.
