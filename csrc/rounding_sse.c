@@ -2,7 +2,7 @@
 
 b32 sse_cw() {
 	b32 cw = 0;
-	__asm__(
+	__asm__ __volatile__(
 			"stmxcsr %0;"
 			:"=m"(cw)
 			:
@@ -12,7 +12,7 @@ b32 sse_cw() {
 }
 
 set_sse_cw(b32 cw) {
-	__asm__(
+	__asm__ __volatile__ (
 			"ldmxcsr %0;"
 			:
 			:"m"(cw)
@@ -22,7 +22,7 @@ set_sse_cw(b32 cw) {
 
 void round_upward() {
 	b32 cw = 0;
-	__asm__(
+	__asm__ __volatile__ (
 			"xor %%eax,%%eax;"
 			"stmxcsr %0;"
 			"mov %0, %%eax;"
@@ -38,7 +38,7 @@ void round_upward() {
 
 void round_downward() {
 	b32 cw = 0;
-	__asm__(
+	__asm__ __volatile__(
 			"xor %%eax,%%eax;"
 			"stmxcsr %0;"
 			"mov %0, %%eax;"
@@ -54,7 +54,7 @@ void round_downward() {
 
 void round_tonearest() {
 	b32 cw = 0;
-	__asm__(
+	__asm__ __volatile__(
 			"xor %%eax,%%eax;"
 			"stmxcsr %0;"
 			"mov %0, %%eax;"
@@ -69,7 +69,7 @@ void round_tonearest() {
 
 void round_truncate() {
 	b32 cw = 0;
-	__asm__(
+	__asm__ __volatile__ (
 			"xor %%eax,%%eax;"
 			"stmxcsr %0;"
 			"mov %0, %%eax;"
