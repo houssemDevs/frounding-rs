@@ -1,0 +1,14 @@
+[package]
+
+name = "frounding"
+version = "0.0.1"
+authors = [ "GHIAT Houssem ghiat.houssem@gmail.com" ]
+build = "build.rs"
+
+[dependencies]
+
+
+
+[build-dependencies]
+
+gcc = "*"
