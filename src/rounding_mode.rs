@@ -9,7 +9,7 @@ pub enum RoundingMode {
 	Upward,
 	Downward,
 	Nearest,
-	Truncate
+	ToZero
 }
 
 impl Display for RoundingMode {
@@ -19,7 +19,7 @@ impl Display for RoundingMode {
 			RoundingMode::Upward => write!(f, "Upward Rounding"),
 			RoundingMode::Downward => write!(f, "Downward Rounding"),
 			RoundingMode::Nearest => write!(f, "To nearest Rounding"),
-			RoundingMode::Truncate => write!(f, "Truncate Rounding"),
+			RoundingMode::ToZero => write!(f, "Toward Zero Rounding"),
 		}
 	}
 }
