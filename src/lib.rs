@@ -64,6 +64,19 @@ impl RoundingState {
             fpu_round_upward();
         }
     }
+    
+    pub fn sse_upward(&mut self){
+    	self.sse_rounding = RoundingMode::Upward;
+    	unsafe {
+    		sse_round_upward();
+    	}
+    }
+    pub fn fpu_upward(&mut self){
+    	self.fpu_rounding = RoundingMode::Upward;
+    	unsafe {
+    		fpu_round_upward();
+    	}
+    }
 
     /// Set the rounding mode toward -infinity for both SSE and x87 FPU.
     pub fn downward(&mut self) {
@@ -71,6 +84,18 @@ impl RoundingState {
         self.fpu_rounding = RoundingMode::Downward;
         unsafe {
             sse_round_downward();
+            fpu_round_downward();
+        }
+    }
+    pub fn sse_downward(&mut self) {
+        self.fpu_rounding = RoundingMode::Downward;
+        unsafe {
+            fpu_round_downward();
+        }
+    }
+    pub fn fpu_downward(&mut self) {
+        self.fpu_rounding = RoundingMode::Downward;
+        unsafe {
             fpu_round_downward();
         }
     }
@@ -84,13 +109,37 @@ impl RoundingState {
             fpu_round_tonearest();
         }
     }
+    pub fn sse_to_nearest(&mut self) {
+        self.sse_rounding = RoundingMode::Nearest;
+        unsafe {
+            sse_round_tonearest();
+        }
+    }
+    pub fn fpu_to_nearest(&mut self) {
+        self.fpu_rounding = RoundingMode::Nearest;
+        unsafe {
+            fpu_round_tonearest();
+        }
+    }
 
     /// Set the rounding mode as truncate for both SSE and x87 FPU.
-    pub fn truncate(&mut self) {
-        self.sse_rounding = RoundingMode::Truncate;
-        self.fpu_rounding = RoundingMode::Truncate;
+    pub fn to_zero(&mut self) {
+        self.sse_rounding = RoundingMode::ToZero;
+        self.fpu_rounding = RoundingMode::ToZero;
         unsafe {
             sse_round_truncate();
+            fpu_round_truncate();
+        }
+    }
+    pub fn sse_to_zero(&mut self) {
+        self.sse_rounding = RoundingMode::ToZero;
+        unsafe {
+            sse_round_truncate();
+        }
+    }
+    pub fn fpu_to_zero(&mut self) {
+        self.fpu_rounding = RoundingMode::ToZero;
+        unsafe {
             fpu_round_truncate();
         }
     }
