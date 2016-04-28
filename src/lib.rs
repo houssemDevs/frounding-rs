@@ -1,4 +1,12 @@
 
+#![warn(missing_docs)]
+
+//! frounding is obivously a rust crate. The purpose of this crate is to change the rounding
+//! mode of the SSE and FPU unit when doing numeric operation. for some fields like interval arithmetic
+//! the rounding mode (aka: rounding direction) is very important.
+
+
+
 mod rounding_mode;
 pub use rounding_mode::*;
 
@@ -29,6 +37,7 @@ pub struct RoundingState {
 
 impl RoundingState {
     /// Create new RoundingState struct and fill it with the current status of control regiters.
+    /// When going out of scope the initial rounding mode is set.
     pub fn new() -> Self {
 
         RoundingState {
@@ -64,18 +73,20 @@ impl RoundingState {
             fpu_round_upward();
         }
     }
-    
-    pub fn sse_upward(&mut self){
-    	self.sse_rounding = RoundingMode::Upward;
-    	unsafe {
-    		sse_round_upward();
-    	}
+	
+	/// Set the rounding mode of the SSE toward +infinity.
+    pub fn sse_upward(&mut self) {
+        self.sse_rounding = RoundingMode::Upward;
+        unsafe {
+            sse_round_upward();
+        }
     }
-    pub fn fpu_upward(&mut self){
-    	self.fpu_rounding = RoundingMode::Upward;
-    	unsafe {
-    		fpu_round_upward();
-    	}
+    /// Set the rounding mode of the FPU toward +infinity.
+    pub fn fpu_upward(&mut self) {
+        self.fpu_rounding = RoundingMode::Upward;
+        unsafe {
+            fpu_round_upward();
+        }
     }
 
     /// Set the rounding mode toward -infinity for both SSE and x87 FPU.
@@ -87,12 +98,14 @@ impl RoundingState {
             fpu_round_downward();
         }
     }
+    /// Set the rounding mode of the SSE toward -infinity.
     pub fn sse_downward(&mut self) {
         self.fpu_rounding = RoundingMode::Downward;
         unsafe {
             fpu_round_downward();
         }
     }
+    /// Set the rounding mode of the FPU toward -infinity.
     pub fn fpu_downward(&mut self) {
         self.fpu_rounding = RoundingMode::Downward;
         unsafe {
@@ -109,12 +122,14 @@ impl RoundingState {
             fpu_round_tonearest();
         }
     }
+    /// Set the rounding mode of the SSE to nearest
     pub fn sse_to_nearest(&mut self) {
         self.sse_rounding = RoundingMode::Nearest;
         unsafe {
             sse_round_tonearest();
         }
     }
+    /// Set the rounding mode of FPU to nearest
     pub fn fpu_to_nearest(&mut self) {
         self.fpu_rounding = RoundingMode::Nearest;
         unsafe {
@@ -122,7 +137,7 @@ impl RoundingState {
         }
     }
 
-    /// Set the rounding mode as truncate for both SSE and x87 FPU.
+    /// Set the rounding mode toward zero (aka truncate) for both SSE and x87 FPU.
     pub fn to_zero(&mut self) {
         self.sse_rounding = RoundingMode::ToZero;
         self.fpu_rounding = RoundingMode::ToZero;
@@ -131,12 +146,14 @@ impl RoundingState {
             fpu_round_truncate();
         }
     }
+    /// Set the rounding mode of SSE toward zero (aka truncate)
     pub fn sse_to_zero(&mut self) {
         self.sse_rounding = RoundingMode::ToZero;
         unsafe {
             sse_round_truncate();
         }
     }
+    /// Set the rounding mode of FPU toward zero (aka truncate)
     pub fn fpu_to_zero(&mut self) {
         self.fpu_rounding = RoundingMode::ToZero;
         unsafe {
