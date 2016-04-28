@@ -14,6 +14,6 @@ fn main() {
 
     rs.to_nearest();
 
-    rs.truncate();
+    rs.to_zero();
 
 }
