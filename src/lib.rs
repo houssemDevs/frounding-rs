@@ -73,8 +73,8 @@ impl RoundingState {
             fpu_round_upward();
         }
     }
-	
-	/// Set the rounding mode of the SSE toward +infinity.
+
+    /// Set the rounding mode of the SSE toward +infinity.
     pub fn sse_upward(&mut self) {
         self.sse_rounding = RoundingMode::Upward;
         unsafe {
@@ -158,6 +158,25 @@ impl RoundingState {
         self.fpu_rounding = RoundingMode::ToZero;
         unsafe {
             fpu_round_truncate();
+        }
+    }
+    /// Reset the rounding mode to the default one (the one found when calling the new function) for both FPU and SEE.
+    pub fn reset() {
+        unsafe {
+            sse_set_cw(self.sse_cw);
+            fpu_set_cw(self.fpu_cw);
+        }
+    }
+    /// Reset the rounding mode to the default one (the one found when calling the new function) for SEE.
+    pub fn sse_reset() {
+        unsafe {
+            sse_set_cw(self.sse_cw);
+        }
+    }
+    /// Reset the rounding mode to the default one (the one found when calling the new function) for FPU.
+    pub fn fpu_reset() {
+        unsafe {
+            fpu_set_cw(self.fpu_cw);
         }
     }
 }

@@ -7,7 +7,7 @@ use std::fmt::Display;
 #[derive(Debug,Clone,Copy)]
 /// Rounding direction
 pub enum RoundingMode {
-	/// The default rounding when starting the program.
+    /// The default rounding when starting the program.
     Default,
     /// Round upward ( toward positive infinity +inf )
     Upward,
