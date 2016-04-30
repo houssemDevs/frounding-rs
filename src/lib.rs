@@ -161,20 +161,20 @@ impl RoundingState {
         }
     }
     /// Reset the rounding mode to the default one (the one found when calling the new function) for both FPU and SEE.
-    pub fn reset() {
+    pub fn reset(&mut self) {
         unsafe {
             sse_set_cw(self.sse_cw);
             fpu_set_cw(self.fpu_cw);
         }
     }
     /// Reset the rounding mode to the default one (the one found when calling the new function) for SEE.
-    pub fn sse_reset() {
+    pub fn sse_reset(&mut self) {
         unsafe {
             sse_set_cw(self.sse_cw);
         }
     }
     /// Reset the rounding mode to the default one (the one found when calling the new function) for FPU.
-    pub fn fpu_reset() {
+    pub fn fpu_reset(&mut self) {
         unsafe {
             fpu_set_cw(self.fpu_cw);
         }
