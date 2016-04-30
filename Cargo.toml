@@ -1,7 +1,7 @@
 [package]
 
 name = "frounding"
-version = "0.0.3"
+version = "0.0.4"
 authors = [ "GHIAT Houssem ghiat.houssem@gmail.com" ]
 build = "build.rs"
 
