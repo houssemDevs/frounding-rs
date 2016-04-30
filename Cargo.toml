@@ -9,7 +9,7 @@ description = "Rust crate to change fpu and sse rounding mode."
 license = "MIT"
 repository = "https://github.com/houssemDevs/frounding-rs"
 keywords = [ "SSE", "FPU", "numeric", "float", "rounding" ]
-documentation="http://houssemdevs.github.io/frounding-rs/target/doc/frounding/index.html"
+documentation="http://houssemdevs.github.io/frounding-rs"
 
 
 [dependencies]
