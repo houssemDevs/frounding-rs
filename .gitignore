@@ -2,3 +2,5 @@ Cargo.lock
 target/debug
 target/release
 .browse.VC.db
+settings.json
+.vscode/
