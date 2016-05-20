@@ -26,7 +26,7 @@ extern "C" {
 }
 
 #[derive(Debug,Clone)]
-/// RoundingState Keep track of the current rounding mode of both the SSE and the x87 FPU units.
+/// Keep track of the current CPU rounding mode (both the SSE and the x87 FPU units).
 pub struct RoundingState {
     sse_cw: u32,
     fpu_cw: u32,
