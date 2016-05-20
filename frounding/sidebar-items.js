@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["RoundingMode","Rounding direction"]],"struct":[["RoundingState","Keep track of the current CPU rounding mode (both the SSE and the x87 FPU units)."]]});

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `RoundingState` struct in crate `frounding`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, RoundingState">
+
+    <title>frounding::RoundingState - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='index.html'>frounding</a></p><script>window.sidebarCurrent = {name: 'RoundingState', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>frounding</a>::<wbr><a class='struct' href=''>RoundingState</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-52' class='srclink' href='../src/frounding/src/lib.rs.html#30-35' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct RoundingState {
+    // some fields omitted
+}</pre><div class='docblock'><p>Keep track of the current CPU rounding mode (both the SSE and the x87 FPU units).</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl <a class='struct' href='../frounding/struct.RoundingState.html' title='frounding::RoundingState'>RoundingState</a></code></h3><div class='impl-items'><h4 id='method.new' class='method'><code>fn <a href='#method.new' class='fnname'>new</a>() -&gt; Self</code></h4>
+<div class='docblock'><p>Create new RoundingState struct and fill it with the current status of control regiters.
+When going out of scope the initial rounding mode is set.</p>
+</div><h4 id='method.current_rounding' class='method'><code>fn <a href='#method.current_rounding' class='fnname'>current_rounding</a>(&amp;self) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a><a class='enum' href='../frounding/enum.RoundingMode.html' title='frounding::RoundingMode'>RoundingMode</a>, <a class='enum' href='../frounding/enum.RoundingMode.html' title='frounding::RoundingMode'>RoundingMode</a><a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a></code></h4>
+<div class='docblock'><p>Return the current rounding mode of both SSE and FPU.</p>
+</div><h4 id='method.sse_rounding' class='method'><code>fn <a href='#method.sse_rounding' class='fnname'>sse_rounding</a>(&amp;self) -&gt; <a class='enum' href='../frounding/enum.RoundingMode.html' title='frounding::RoundingMode'>RoundingMode</a></code></h4>
+<div class='docblock'><p>Return the current rounding mode of the SSE unit.</p>
+</div><h4 id='method.fpu_rounding' class='method'><code>fn <a href='#method.fpu_rounding' class='fnname'>fpu_rounding</a>(&amp;self) -&gt; <a class='enum' href='../frounding/enum.RoundingMode.html' title='frounding::RoundingMode'>RoundingMode</a></code></h4>
+<div class='docblock'><p>Return the current rounding mode of x87 FPU unit.</p>
+</div><h4 id='method.upward' class='method'><code>fn <a href='#method.upward' class='fnname'>upward</a>(&amp;mut self)</code></h4>
+<div class='docblock'><p>Set the rounding mode toward +infinity for both SSE and x87 FPU.</p>
+</div><h4 id='method.sse_upward' class='method'><code>fn <a href='#method.sse_upward' class='fnname'>sse_upward</a>(&amp;mut self)</code></h4>
+<div class='docblock'><p>Set the rounding mode of the SSE toward +infinity.</p>
+</div><h4 id='method.fpu_upward' class='method'><code>fn <a href='#method.fpu_upward' class='fnname'>fpu_upward</a>(&amp;mut self)</code></h4>
+<div class='docblock'><p>Set the rounding mode of the FPU toward +infinity.</p>
+</div><h4 id='method.downward' class='method'><code>fn <a href='#method.downward' class='fnname'>downward</a>(&amp;mut self)</code></h4>
+<div class='docblock'><p>Set the rounding mode toward -infinity for both SSE and x87 FPU.</p>
+</div><h4 id='method.sse_downward' class='method'><code>fn <a href='#method.sse_downward' class='fnname'>sse_downward</a>(&amp;mut self)</code></h4>
+<div class='docblock'><p>Set the rounding mode of the SSE toward -infinity.</p>
+</div><h4 id='method.fpu_downward' class='method'><code>fn <a href='#method.fpu_downward' class='fnname'>fpu_downward</a>(&amp;mut self)</code></h4>
+<div class='docblock'><p>Set the rounding mode of the FPU toward -infinity.</p>
+</div><h4 id='method.to_nearest' class='method'><code>fn <a href='#method.to_nearest' class='fnname'>to_nearest</a>(&amp;mut self)</code></h4>
+<div class='docblock'><p>Set the rounding mode to nearest for both SSE and x87 FPU.</p>
+</div><h4 id='method.sse_to_nearest' class='method'><code>fn <a href='#method.sse_to_nearest' class='fnname'>sse_to_nearest</a>(&amp;mut self)</code></h4>
+<div class='docblock'><p>Set the rounding mode of the SSE to nearest</p>
+</div><h4 id='method.fpu_to_nearest' class='method'><code>fn <a href='#method.fpu_to_nearest' class='fnname'>fpu_to_nearest</a>(&amp;mut self)</code></h4>
+<div class='docblock'><p>Set the rounding mode of FPU to nearest</p>
+</div><h4 id='method.to_zero' class='method'><code>fn <a href='#method.to_zero' class='fnname'>to_zero</a>(&amp;mut self)</code></h4>
+<div class='docblock'><p>Set the rounding mode toward zero (aka truncate) for both SSE and x87 FPU.</p>
+</div><h4 id='method.sse_to_zero' class='method'><code>fn <a href='#method.sse_to_zero' class='fnname'>sse_to_zero</a>(&amp;mut self)</code></h4>
+<div class='docblock'><p>Set the rounding mode of SSE toward zero (aka truncate)</p>
+</div><h4 id='method.fpu_to_zero' class='method'><code>fn <a href='#method.fpu_to_zero' class='fnname'>fpu_to_zero</a>(&amp;mut self)</code></h4>
+<div class='docblock'><p>Set the rounding mode of FPU toward zero (aka truncate)</p>
+</div><h4 id='method.reset' class='method'><code>fn <a href='#method.reset' class='fnname'>reset</a>(&amp;mut self)</code></h4>
+<div class='docblock'><p>Reset the rounding mode to the default one (the one found when calling the new function) for both FPU and SEE.</p>
+</div><h4 id='method.sse_reset' class='method'><code>fn <a href='#method.sse_reset' class='fnname'>sse_reset</a>(&amp;mut self)</code></h4>
+<div class='docblock'><p>Reset the rounding mode to the default one (the one found when calling the new function) for SEE.</p>
+</div><h4 id='method.fpu_reset' class='method'><code>fn <a href='#method.fpu_reset' class='fnname'>fpu_reset</a>(&amp;mut self)</code></h4>
+<div class='docblock'><p>Reset the rounding mode to the default one (the one found when calling the new function) for FPU.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html' title='core::ops::Drop'>Drop</a> for <a class='struct' href='../frounding/struct.RoundingState.html' title='frounding::RoundingState'>RoundingState</a></code></h3><div class='docblock'><p>Drop trait is implimented as when going out of scope the default status of the control registers.
+is retrived.</p>
+</div><div class='impl-items'><h4 id='method.drop' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html#method.drop' class='fnname'>drop</a>(&amp;mut self)</code></h4>
+</div><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a> for <a class='struct' href='../frounding/struct.RoundingState.html' title='frounding::RoundingState'>RoundingState</a></code></h3><div class='impl-items'><h4 id='method.clone' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class='struct' href='../frounding/struct.RoundingState.html' title='frounding::RoundingState'>RoundingState</a></code></h4>
+<h4 id='method.clone_from' class='method'><span class="since">1.0.0</span><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='struct' href='../frounding/struct.RoundingState.html' title='frounding::RoundingState'>RoundingState</a></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "frounding";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script defer src="../search-index.js"></script>
+</body>
+</html>
